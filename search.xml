@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[1087 有多少不同的值]]></title>
+    <url>%2F%2Fposts%2F29230%2F</url>
+    <content type="text"><![CDATA[1087 &#x6709;&#x591A;&#x5C11;&#x4E0D;&#x540C;&#x7684;&#x503C; &#xFF08;20 &#x5206;&#xFF09;&#x2003;&#x2003;&#x5F53;&#x81EA;&#x7136;&#x6570; n &#x4F9D;&#x6B21;&#x53D6; 1&#x3001;2&#x3001;3&#x3001;&#x2026;&#x2026;&#x3001;N &#x65F6;&#xFF0C;&#x7B97;&#x5F0F; &#x230A;n/2&#x230B;+&#x230A;n/3&#x230B;+&#x230A;n/5&#x230B; &#x6709;&#x591A;&#x5C11;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x503C;&#xFF1F;&#xFF08;&#x6CE8;&#xFF1A;&#x230A;x&#x230B; &#x4E3A;&#x53D6;&#x6574;&#x51FD;&#x6570;&#xFF0C;&#x8868;&#x793A;&#x4E0D;&#x8D85;&#x8FC7; x &#x7684;&#x6700;&#x5927;&#x81EA;&#x7136;&#x6570;&#xFF0C;&#x5373; x &#x7684;&#x6574;&#x6570;&#x90E8;&#x5206;&#x3002;&#xFF09;&#x8F93;&#x5165;&#x683C;&#x5F0F;&#xFF1A;&#x8F93;&#x5165;&#x7ED9;&#x51FA;&#x4E00;&#x4E2A;&#x6B63;&#x6574;&#x6570; N&#xFF08;2 &#x2264; N &#x2264; $10^{4}$)&#x3002;1088 &#x4E09;&#x4EBA;&#x884C; &#xFF08;20 &#x5206;&#xFF09;&#x8F93;&#x51FA;&#x683C;&#x5F0F;&#xFF1A;&#x5728;&#x4E00;&#x884C;&#x4E2D;&#x8F93;&#x51FA;&#x9898;&#x9762;&#x4E2D;&#x7B97;&#x5F0F;&#x53D6;&#x5230;&#x7684;&#x4E0D;&#x540C;&#x503C;&#x7684;&#x4E2A;&#x6570;&#x3002; &#x8F93;&#x5165;&#x6837;&#x4F8B;&#xFF1A;12017 &#x8F93;&#x51FA;&#x6837;&#x4F8B;&#xFF1A;11480 &#x6709;&#x4E24;&#x79CD;&#x89E3;&#x6CD5;&#xFF1A;&#x7B2C;&#x4E00;&#x79CD;&#xFF1A;12345678910111213141516171819#include &lt;iostream&gt;using namespace std;const int maxn = 100001;int main() { bool flag[maxn] = {false};//&#x901A;&#x8FC7;hash&#x8868;&#x6765;&#x53BB;&#x91CD; int n, temp; cin&gt;&gt;n; for (int i = 1; i &lt;= n; i++) { temp = i/2 +i/3 + i/5; flag[temp] = true; } int count = 0; for(int i = 0; i &lt; maxn; i++){ if(flag[i] == true) count++; } cout&lt;&lt;count&lt;&lt;endl; return 0;} &#x7B2C;&#x4E8C;&#x79CD;&#xFF1A;123456789101112131415#include &lt;cstdio&gt;#include &lt;set&gt;using namespace std;int main() { int n; scanf(&quot;%d&quot;, &amp;n); set&lt;int&gt; st; //&#x901A;&#x8FC7;&#x96C6;&#x5408;&#x6765;&#x53BB;&#x91CD; for (int i = 1; i &lt;= n; i++) { st.insert(i/2 + i/3 + i/5); } printf(&quot;%d&quot;, st.size()); return 0;} &#x2003;&#x2003;&#x592A;&#x7B80;&#x5355;&#x4E86;&#x6CA1;&#x5565;&#x597D;&#x8BB2;&#x7684;&#x3002;&#x3002;&#x3002; document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <categories>
+        <category>PAT_B</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>STL</tag>
+      </tags>
+  </entry>
+</search>
