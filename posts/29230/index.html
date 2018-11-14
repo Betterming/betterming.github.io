@@ -1,45 +1,112 @@
 <!DOCTYPE html>
-<html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta http-equiv="Content-Language" content="zh-cn">
-    <meta charset="utf-8">
-    
-    
-    
-    <title>1087 有多少不同的值 | Betterming&#39;s Blog</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    
-    <meta name="theme-color" content="#77AAFF">
-    
-    
-    <meta name="keywords" content="算法,STL">
-    
-    
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
 
-    
 
-    <!-- Baidu Push -->
-<script>
-	(function(){
-		var bp = document.createElement('script');
-		var curProtocol = window.location.protocol.split(':')[0];
-		if (curProtocol === 'https') {
-			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-		}
-		else {
-			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-		}
-		var s = document.getElementsByTagName("script")[0];
-		s.parentNode.insertBefore(bp, s);
-	})();
 
-	var _hmt = _hmt || [];
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/jj.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/jj.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/jj.png?v=6.5.0">
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
 </script>
 
 
+  
 
-    
-    <meta name="description" content="1087 有多少不同的值 （20 分）&amp;emsp;&amp;emsp;当自然数 n 依次取 1、2、3、……、N 时，算式 ⌊n/2⌋+⌊n/3⌋+⌊n/5⌋ 有多少个不同的值？（注：⌊x⌋ 为取整函数，表示不超过 x 的最大自然数，即 x 的整数部分。）">
+
+
+
+  <meta name="description" content="1087 有多少不同的值 （20 分）&amp;emsp;&amp;emsp;当自然数 n 依次取 1、2、3、……、N 时，算式 ⌊n/2⌋+⌊n/3⌋+⌊n/5⌋ 有多少个不同的值？（注：⌊x⌋ 为取整函数，表示不超过 x 的最大自然数，即 x 的整数部分。）">
 <meta name="keywords" content="算法,STL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="1087 有多少不同的值">
@@ -51,173 +118,401 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1087 有多少不同的值">
 <meta name="twitter:description" content="1087 有多少不同的值 （20 分）&amp;emsp;&amp;emsp;当自然数 n 依次取 1、2、3、……、N 时，算式 ⌊n/2⌋+⌊n/3⌋+⌊n/5⌋ 有多少个不同的值？（注：⌊x⌋ 为取整函数，表示不超过 x 的最大自然数，即 x 的整数部分。）">
-    
-        <link rel="alternate" type="application/atom+xml" title="Betterming&#39;s Blog" href="/atom.xml">
-    
-    <link rel="shortcut icon" href="/img/avatar.png">
-    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
-    <script>window.lazyScripts=[]</script>
 
-    <!-- custom head -->
-    
-            
+
+
+  <link rel="alternate" href="/atom.xml" title="Betterming's Blog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://betterming.github.io/posts/29230/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>1087 有多少不同的值 | Betterming's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
 </head>
 
-<body>
-    <div id="loading" class="active"></div>
-    <aside id="menu" class="hide">
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.png" alt="avatar">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname" id="name">Betterming</h5>
-          
-            <div id="yiyanmotto" class="motto">&nbsp;</div>
-          
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-              <li class="waves-block waves-effect">
-                  <a href="/">
-                    <i class="icon icon-lg icon-home"></i>
-                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
-                  </a>
-              </li>
-            
-              <li class="waves-block waves-effect">
-                  <a href="/archives">
-                    <i class="icon icon-lg icon-archives"></i>
-                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
-                  </a>
-              </li>
-            
-              <li class="waves-block waves-effect">
-                  <a href="/categories">
-                    <i class="icon icon-lg icon-th-list"></i>
-                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
-                  </a>
-              </li>
-            
-              <li class="waves-block waves-effect">
-                  <a href="/tags">
-                    <i class="icon icon-lg icon-tags"></i>
-                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
-                  </a>
-              </li>
-            
-              <li class="waves-block waves-effect">
-                  <a href="/about">
-                    <i class="icon icon-lg icon-smile-o"></i>
-                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
-                  </a>
-              </li>
-            
-      <div class="nav2">
-          
-              <a class="nav2item" data-title="Email" href="mailto:2652214420@qq.com" target="_parent" title="Email">
-                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
-              </a>
-          
-              <a class="nav2item" data-title="Github" href="https://github.com/Betterming" target="_blank" title="Github">
-                <i class="icon icon-lg icon-github github"></i>
-              </a>
-          
-              <a class="nav2item" data-title="微博" href="https://weibo.com/u/6179399347" target="_blank" title="微博">
-                <i class="icon icon-lg icon-weibo weibo"></i>
-              </a>
-          
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
 
-            </div>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Betterming's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
         
-      </ul>
         
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
- 
-</aside>
+  <div id="local-search-result"></div>
+</div>
 
 
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">1087 有多少不同的值</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
-            <i class="icon icon-lg icon-rss"></i>
-        </a>
+
     </div>
-</header>
-<header class="content-header post-header">
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
     
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
     
-    <div class="container fade-scale">
-        <div id="myheader">
-            <h1 class="title">
-                
-            </h1>
-            <h5 class="subtitle">
-                
-                
-            </h5>
-        </div>
-    </div>
 
-</header>
+  
 
+  
+  
+  
 
-<div class="container body-wrap">
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://betterming.github.io/posts/29230/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Betterming">
+      <meta itemprop="description" content="Coding Changes the World">
+      <meta itemprop="image" content="/images/jj.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Betterming's Blog">
+    </span>
+
     
-<article id="post-dd" class="post-article article-type-post fade" itemprop="blogPost">
+      <header class="post-header">
 
-    <div class="post-card">
-        <h1 class="post-card-title">1087 有多少不同的值</h1>
+        
+        
+          <h1 class="post-title" itemprop="name headline">1087 有多少不同的值
+              
+            
+          </h1>
+        
+
         <div class="post-meta">
-            <i class="icon icon-lg icon-calendar-o"></i>
-            发表于
-            <time class="post-time" title="2018-09-19 00:15:00" datetime="2018-09-18T16:15:00.000Z" itemprop="datePublished">2018-09-19</time>
+          <span class="post-time">
 
-            <br id="mybreak">
             
-	<i class="icon icon-lg icon-folder-o"></i>
-	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PAT-B/">PAT_B</a></li></ul>
-
-
-            <i>·</i>
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
-</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-19 00:15:00" itemprop="dateCreated datePublished" datetime="2018-09-19T00:15:00+08:00">2018-09-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-11-14 18:01:31" itemprop="dateModified" datetime="2018-11-14T18:01:31+08:00">2018-11-14</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/PAT-B/" itemprop="url" rel="index"><span itemprop="name">PAT_B</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/29230/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/29230/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/29230/" class="leancloud_visitors" data-flag-title="1087 有多少不同的值">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
 
         </div>
-        <div class="post-count-custom">
-            <i class="icon icon-lg icon-comment-o"></i>
-            阅读本文可能花费您&nbsp;<span class="post-count">2</span>&nbsp;分钟
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <p>1087 &#x6709;&#x591A;&#x5C11;&#x4E0D;&#x540C;&#x7684;&#x503C; &#xFF08;20 &#x5206;&#xFF09;<br>&#x2003;&#x2003;&#x5F53;&#x81EA;&#x7136;&#x6570; n &#x4F9D;&#x6B21;&#x53D6; 1&#x3001;2&#x3001;3&#x3001;&#x2026;&#x2026;&#x3001;N &#x65F6;&#xFF0C;&#x7B97;&#x5F0F; &#x230A;n/2&#x230B;+&#x230A;n/3&#x230B;+&#x230A;n/5&#x230B; &#x6709;&#x591A;&#x5C11;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x503C;&#xFF1F;&#xFF08;&#x6CE8;&#xFF1A;&#x230A;x&#x230B; &#x4E3A;&#x53D6;&#x6574;&#x51FD;&#x6570;&#xFF0C;&#x8868;&#x793A;&#x4E0D;&#x8D85;&#x8FC7; x &#x7684;&#x6700;&#x5927;&#x81EA;&#x7136;&#x6570;&#xFF0C;&#x5373; x &#x7684;&#x6574;&#x6570;&#x90E8;&#x5206;&#x3002;&#xFF09;<br><a id="more"></a><br>&#x8F93;&#x5165;&#x683C;&#x5F0F;&#xFF1A;<br>&#x8F93;&#x5165;&#x7ED9;&#x51FA;&#x4E00;&#x4E2A;&#x6B63;&#x6574;&#x6570; N&#xFF08;2 &#x2264; N &#x2264; $10^{4}$)&#x3002;<br>1088 &#x4E09;&#x4EBA;&#x884C; &#xFF08;20 &#x5206;&#xFF09;<br>&#x8F93;&#x51FA;&#x683C;&#x5F0F;&#xFF1A;<br>&#x5728;&#x4E00;&#x884C;&#x4E2D;&#x8F93;&#x51FA;&#x9898;&#x9762;&#x4E2D;&#x7B97;&#x5F0F;&#x53D6;&#x5230;&#x7684;&#x4E0D;&#x540C;&#x503C;&#x7684;&#x4E2A;&#x6570;&#x3002;</p>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1087 &#x6709;&#x591A;&#x5C11;&#x4E0D;&#x540C;&#x7684;&#x503C; &#xFF08;20 &#x5206;&#xFF09;<br>&#x2003;&#x2003;&#x5F53;&#x81EA;&#x7136;&#x6570; n &#x4F9D;&#x6B21;&#x53D6; 1&#x3001;2&#x3001;3&#x3001;&#x2026;&#x2026;&#x3001;N &#x65F6;&#xFF0C;&#x7B97;&#x5F0F; &#x230A;n/2&#x230B;+&#x230A;n/3&#x230B;+&#x230A;n/5&#x230B; &#x6709;&#x591A;&#x5C11;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x503C;&#xFF1F;&#xFF08;&#x6CE8;&#xFF1A;&#x230A;x&#x230B; &#x4E3A;&#x53D6;&#x6574;&#x51FD;&#x6570;&#xFF0C;&#x8868;&#x793A;&#x4E0D;&#x8D85;&#x8FC7; x &#x7684;&#x6700;&#x5927;&#x81EA;&#x7136;&#x6570;&#xFF0C;&#x5373; x &#x7684;&#x6574;&#x6570;&#x90E8;&#x5206;&#x3002;&#xFF09;<br><a id="more"></a><br>&#x8F93;&#x5165;&#x683C;&#x5F0F;&#xFF1A;<br>&#x8F93;&#x5165;&#x7ED9;&#x51FA;&#x4E00;&#x4E2A;&#x6B63;&#x6574;&#x6570; N&#xFF08;2 &#x2264; N &#x2264; $10^{4}$)&#x3002;<br>1088 &#x4E09;&#x4EBA;&#x884C; &#xFF08;20 &#x5206;&#xFF09;<br>&#x8F93;&#x51FA;&#x683C;&#x5F0F;&#xFF1A;<br>&#x5728;&#x4E00;&#x884C;&#x4E2D;&#x8F93;&#x51FA;&#x9898;&#x9762;&#x4E2D;&#x7B97;&#x5F0F;&#x53D6;&#x5230;&#x7684;&#x4E0D;&#x540C;&#x503C;&#x7684;&#x4E2A;&#x6570;&#x3002;</p>
 <p>&#x8F93;&#x5165;&#x6837;&#x4F8B;&#xFF1A;<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2017</span><br></pre></td></tr></tbody></table></figure><p></p>
 <p>&#x8F93;&#x51FA;&#x6837;&#x4F8B;&#xFF1A;<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1480</span><br></pre></td></tr></tbody></table></figure><p></p>
 <p>&#x6709;&#x4E24;&#x79CD;&#x89E3;&#x6CD5;&#xFF1A;<br>&#x7B2C;&#x4E00;&#x79CD;&#xFF1A;<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn = 100001;</span><br><span class="line"></span><br><span class="line">int main() {</span><br><span class="line">  bool flag[maxn] = {false};//&#x901A;&#x8FC7;hash&#x8868;&#x6765;&#x53BB;&#x91CD;</span><br><span class="line">  int n, temp;</span><br><span class="line">  cin&gt;&gt;n;</span><br><span class="line">  for (int i = 1; i &lt;= n; i++) {</span><br><span class="line">    temp = i/2 +i/3 + i/5;</span><br><span class="line">    flag[temp] = true;</span><br><span class="line">  }</span><br><span class="line">  int count = 0;</span><br><span class="line">  for(int i = 0; i &lt; maxn; i++){</span><br><span class="line">    if(flag[i] == true) count++;</span><br><span class="line">  }</span><br><span class="line">  cout&lt;&lt;count&lt;&lt;endl;</span><br><span class="line">  return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
@@ -242,297 +537,865 @@
             document.body.appendChild(img);
           });
       </script>
-        </div>
-
-        <blockquote class="post-copyright">
-    <div class="content">
-        
-<span class="post-time">
-    最后更新：<time datetime="2018-11-14T10:01:31.788Z" itemprop="dateUpdated">2018-11-14 18:01:31</time>
-</span>
-
-
-        
-        原文链接：<a href="/posts/29230/" target="_blank" rel="external">https://betterming.github.io/posts/29230/</a>
-        
+      
     </div>
-    <footer>
-        <div onclick="location.href='https://betterming.github.io'">
-            <img src="/img/avatar.png" alt="Betterming">
-            <a>Betterming</a>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Betterming 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Betterming 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/STL/" rel="tag"># STL</a>
+          
         </div>
+      
+
+      
+      
+      
+
+      
+
+      
+      
     </footer>
-</blockquote>
+  </div>
+  
+  
+  
+  </article>
 
-        
-    <div class="page-reward">
-        <nav class="myreward">
-            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
-        </nav>
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
     </div>
+  
 
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/STL/">STL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-
-            
 
 
         </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
+  </div>
 
+  <aside id="sidebar" class="sidebar">
     
+    <div class="sidebar-inner">
 
+      
 
-    
-    
+      
 
-    
-
-    
-    <!-- Valine Comments -->
-    <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
-    <!-- Valine Comments script -->
-    <script>
-        var GUEST_INFO = ['nick','mail','link'];
-        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
-          return GUEST_INFO.indexOf(item) > -1
-        });
-        new Valine({
-            el: '#comments',
-            notify: 'false' == 'true',
-            verify: 'false' == 'true',
-            appId: "rXo08RXWhpfL5sTienl8p1ur-gzGzoHsz",
-            appKey: "QraQ5KvFraIq0iUhzsDG0sqE",
-            avatar: "mm",
-            placeholder: "(≧∀≦)o 来呀！快活呀！~",
-            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
-            pageSize: "10"
-        })
-    </script>
-    <!-- Valine Comments end -->
-
-
-
-</article>
-
-</div>
-
-        <footer class="footer">
-    <div class="footer-content">
-        <span class="power">
-            <i class="icon icon-lg icon-copyright"></i>
-            2018
-            <i class="icon icon-lg icon-heart"></i>
-            <a href="https://betterming.github.io">Betterming</a>
-        </span>
-
-        <br>
-
-        <span id="RunTime" style="color:#a7a7a2;"></span>
-        <br>
-
-        <span>
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-	<i class="icon icon-lg icon-user">
-<span id="busuanzi_container_site_uv" style="display:none">
-       访问用户：<span id="busuanzi_value_site_uv"></span>
-    </span>人</i>
-    ·
-    <i class="icon icon-lg icon-eye">
-    <span id="busuanzi_container_site_pv" style="display:none">
-      访问次数：<span id="busuanzi_value_site_pv"></span>
-    </span>次
-    </i>
+              <img class="site-author-image" itemprop="image" src="/images/jj.png" alt="Betterming">
+            
+              <p class="site-author-name" itemprop="name">Betterming</p>
+              <p class="site-description motion-element" itemprop="description">Coding Changes the World</p>
+          </div>
 
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
 
-        </span>
-        <br>
-    </div>
-</footer>
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
 
-    </main>
-    
-        
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        <span>感谢您的鼓励支持！</span>
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" data-img="/img/dog.png" alt="打赏二维码">
-        </div>
-        
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechatpay.jpg" data-alipay="/img/alipay.jpg">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
-                <span class="reward-toggle-item alipayPay">支付宝</span>
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
             </div>
-        </label>
-        
-        <i class="icon icon-caret-up"></i>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/yourname" title="GitHub &rarr; https://github.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://blog.csdn.net/qq_32074689" title="CSDN &rarr; https://blog.csdn.net/qq_32074689" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:2652214420@qq.com" title="E-Mail &rarr; mailto:2652214420@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xq773939719.coding.me/" title="https://xq773939719.coding.me/" rel="noopener" target="_blank">大佬</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
     </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Betterming</span>
+
+  
+
+  
 </div>
 
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
 
     
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
 
+    
+	
+    
 
-    <!-- waves按钮特效 -->
-<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+    
+  </div>
 
-<!-- 主题配置脚本 -->
-<script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
-</script>
+  
 
-<!-- jquery -->
-<script src="/js/jquery.min.js?v=3.0"></script>
-
-<!-- 搜索 -->
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item waves-block waves-effect" onclick="location.href='{path}'">
-    <div class="title ellipsis" title="{title}">{title}</div>
-</li>
-</template>
-
-
-<!-- main博客脚本 -->
-<script src="/js/main.min.js?v=3.0"></script>
-
-<!-- 动画&配置 -->
-<script src="/js/script.min.js?v=3.0"></script>
-
-<!-- 脚本管理 -->
-<script>
-
-if(window.innerWidth > 800){
-	/* 3D标题 */
-	$(".content-header").on("mousemove", threedee);
-
-	/* 底部追随鼠标 */
-	$(".footer").hover(2);
-
-	/* gotop键的涟漪 */
-	$("#gotop").hover(1);
-
-	/* 赞赏的粒子雨 */
-	$("#reward").hover(3);
-
-	/* 微信公众号的底部渲染 */
-	$("#wechat").hover(4);
-
-    /* 标题跳动 */
-    $(".archivestitle").bumpyText();
-
-	/* 图片点击放大 */
-	const postimg = jQuery(".post-content img:not(.github-emoji)");
-	postimg.on("click",function(){
-
-		mask.classList.add("in");
-		main.classList.add("Mask");
-		menu.classList.add("Mask");
-		var myimg = this.cloneNode(true);
-		myimg.classList.add("imgShow");
-
-		setTimeout(function(){
-			jQuery(myimg).animate({
-				opacity:"1"
-			},1000);
-		},0);
-
-		document.body.appendChild(myimg);
-
-		myimg.onclick=function(){
-			document.body.removeChild(myimg);
-			mask.classList.remove("in");
-			main.classList.remove("Mask");
-			menu.classList.remove("Mask");
-		};
-
-	});
-
-}
-
-/* 名字跳动 */
-$("#name").bumpyText();
-
-
-/* 网站运行时间 */
-setInterval(function () {
-	setTime("2018/9/24");
-}, 1000);
-
-/* 文章块的淡出 */
-postshow();
-
-/* 座右铭 */
-
-   getHitokoto();
-
-
-
-/* 粘贴提示 */
-G($(".post-content"), location.href, "Betterming");
-
-
-/* 控制台 */
-if (window.console && window.console.log) {
-	setTimeout(function () {
-		console.log("\n %c 一个坏掉的番茄 %c  © Simon Ma  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
-	}, 0);
-}
-
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
 
 
-<!-- 公式渲染 -->
 
-<!-- mathjax config similar to math.stackexchange -->
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'rXo08RXWhpfL5sTienl8p1ur-gzGzoHsz',
+        appKey: 'QraQ5KvFraIq0iUhzsDG0sqE',
+        placeholder: '来呀！快活呀！~',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: true
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
     }
-});
+    var path = "/" + search_path;
+    // monitor main search box;
 
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
     }
-});
-</script>
 
-<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 
-<!-- 不蒜子 -->
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+  
 
 </body>
 </html>
