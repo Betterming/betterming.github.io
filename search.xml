@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[markdown使用]]></title>
+    <url>%2F%2Fposts%2Fundefined%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[1090 危险品装箱 （25 分）]]></title>
     <url>%2F%2Fposts%2F2dc86a28%2F</url>
     <content type="text"><![CDATA[1090 危险品装箱 （25 分）集装箱运输货物时，我们必须特别小心，不能把不相容的货物装在一只箱子里。比如氧化剂绝对不能跟易燃液体同箱，否则很容易造成爆炸。本题给定一张不相容物品的清单，需要你检查每一张集装箱货品清单，判断它们是否能装在同一只箱子里。 输入格式：输入第一行给出两个正整数：N (≤10$^{4}$) 是成对的不相容物品的对数；M (≤100) 是集装箱货品清单的单数。 随后数据分两大块给出。第一块有 N 行，每行给出一对不相容的物品。第二块有 M 行，每行给出一箱货物的清单，格式如下： K G[1] G[2] … G[K]其中 K (≤1000) 是物品件数，G[i] 是物品的编号。简单起见，每件物品用一个 5 位数的编号代表。两个数字之间用空格分隔。 输出格式：对每箱货物清单，判断是否可以安全运输。如果没有不相容物品，则在一行中输出 Yes，否则输出 No。 输入样例：123456789106 320001 2000220003 2000420005 2000620003 2000120005 2000420004 200064 00001 20004 00002 200035 98823 20002 20003 20006 100103 12345 67890 23333 输出样例：123NoYesYes 解题思路： map&lt;int, vector &gt; mp字典用来将每个物品与其不相容的物品序列配对 a[10000] = {0}：用来标记物品是否存在 vector g(count): 存放每箱物品清单编号 思路：先配对，然后对每箱物品清单的每个物品判断它的不相容数组中是否有标记，有的话no, 用flag == 1表示。最后为1，即有不相容物品对。若最后还是初始时的0则表示无不相容物品对。12345678910111213141516171819202122232425262728#include &lt;vector&gt;#include &lt;iostream&gt;#include &lt;map&gt;using namespace std;int main() &#123; int n, m, number1, number2; map&lt;int,vector&lt;int&gt;&gt; mp; scanf(&quot;%d%d&quot;, &amp;n, &amp;m); for (int i = 0; i &lt; n; i++) &#123; cin&gt;&gt;number1&gt;&gt;number2; mp[number1].push_back(number2); mp[number2].push_back(number1); &#125; while (m--) &#123; int count, flag = 0, a[100000] = &#123;0&#125;; scanf(&quot;%d&quot;, &amp;count); vector&lt;int&gt; g(count); for (int i = 0; i &lt; count; i++) &#123; cin&gt;&gt;g[i]; a[g[i]] = 1; &#125; for (int i = 0; i &lt; g.size(); i++) for (int j = 0; j &lt; mp[g[i]].size(); j++) if (a[mp[g[i]][j]] == 1) flag = 1; printf(&quot;%s\n&quot;,flag ==0 ? &quot;Yes&quot; :&quot;No&quot;); &#125; return 0;&#125;]]></content>
