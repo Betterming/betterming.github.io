@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[立一个大大的flag]]></title>
-    <url>%2F%2Fposts%2Fundefined%2F</url>
-    <content type="text"><![CDATA[从今天起，立下一个大大的flag，坚持写博客]]></content>
-      <categories>
-        <category>notes</category>
-      </categories>
-      <tags>
-        <tag>flag</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[BST Summary]]></title>
     <url>%2F%2Fposts%2Fundefined%2F</url>
     <content type="text"><![CDATA[Data Structure – BST1. 定义：BST(Binary Search Tree)或者是一棵空树，或者是具有下列性质的二叉树： 若左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若右子树不空，则右子树上所有结点的值均大于它的根结点的值； 左、右子树也分别为二叉排序树； 没有键值相等的节点。 2.基本操作主要包括：查找、插入、建立、删除1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798struct node &#123; int data; node *lchild; node *rchild;&#125;;// 新建节点，返回一个节点指针node* newNode(int v)&#123; node* Node = new node; Node-&gt;data = v; Node-&gt;lchild = Node-&gt;rchild = NULL; return Node;&#125;// search x 只需搜索一边子树即可,O(h) h表示树高void search(node* root, int x)&#123; if(root == NULL) &#123; printf(&quot;search failed!\n&quot;); return; &#125; if(x == root-&gt;data) printf(&quot;%d\n&quot;, root-&gt;data); else if(x &lt; root-&gt;data) search(root-&gt;lchild, int x); else search(root-&gt;rchild, int x);&#125;// insert x 当root==NULL时，即为插入之处 O(h)void insert(node* &amp;root, int x)&#123; if(root == NULL)&#123; root = newNode(x); return; &#125; if(x == root-&gt;data) return; else if(x &lt; root-&gt;data) insert(root-&gt;lchild, x); else insert(root-&gt;rchild, x);&#125;// BST的建立(注意：同一组数据，如果插入的顺序不同最后形成的BST可能也不同)// 复杂度O(h)*n = O(nlog2n)node *Create(int data[], int n)&#123; node* root = NULL; for (int i = 0; i &lt; n; ++i) &#123; insert(root, data[i]); &#125; return root;&#125;//BST的节点删除，删除根节点//删除根节点后，用直接后继或者直接前驱来替换//直接前驱：左子树一直向右直到某一节点的右子树为NULL的节点//直接后继：右子树一直向左直到某一节点的左子树为NULL的节点//FindMin()函数用于寻找树root的最小权值节点node* FindMin(node* root)&#123; while(root-&gt;lchild != NULL) root = root-&gt;lchild; return root;&#125;//FindMax()函数用于寻找树root的最大权值节点node* FindMax(node* root)&#123; while(root-&gt;rchild != NULL) root = root-&gt;rchild; return root;&#125;/*BST删除节点步骤:1. 当前节点root空，直接返回2. 当前节点root的data值等于x，进入删除操作 a)当前节点root为叶子节点，直接删除。 b)当前节点root存在左子树，找到前驱pre，覆盖root，删除pre c)当前节点root存在右子树，找到后继next，覆盖root，删除next3. 若当前节点root权值大于x，则root = root-&gt;lchild 递归删除4. 若当前节点root权值小于x，则root = root-&gt;rchild 递归删除*/void deleteNode(node* &amp;root, int x)&#123; if(root == NULL) return; if(root-&gt;data == x) &#123; if(root-&gt;lchild == NULL &amp;&amp; root-&gt;rchild == NULL) root = NULL; else if(root-&gt;lchild != NULL) &#123; node *pre = FindMax(root-&gt;lchild); root-&gt;data = pre-&gt;data; deleteNode(root-&gt;lchild, pre-&gt;data); //删除pre节点 &#125; else &#123; node* next = FindMin(root-&gt;rchild); root-&gt;data = next-&gt;data; deleteNode(root-&gt;rchild, next-&gt;data); //删除next 节点 &#125; &#125; else if(root-&gt;data &gt; x) deleteNode(root-&gt;lchild, x); else deleteNode(root-&gt;rchild, x);&#125; 3. 应用利用PAT1043_Is It a Binary Search Tree 来练习一下BST。 1043 Is It a Binary Search Tree （25 分）A Binary Search Tree (BST) is recursively defined as a binary tree which has the following properties: The left subtree of a node contains only nodes with keys less than the node’s key. The right subtree of a node contains only nodes with keys greater than or equal to the node’s key. Both the left and right subtrees must also be binary search trees. If we swap the left and right subtrees of every node, then the resulting tree is called the Mirror Image of a BST.Now given a sequence of integer keys, you are supposed to tell if it is the preorder traversal sequence of a BST or the mirror image of a BST. Input Specification: Each input file contains one test case. For each case, the first line contains a positive integer N (≤1000). Then N integer keys are given in the next line. All the numbers in a line are separated by a space. Output Specification: For each test case, first print in a line YES if the sequence is the preorder traversal sequence of a BST or the mirror image of a BST, or NO if not. Then if the answer is YES, print in the next line the postorder traversal sequence of that tree. All the numbers in a line must be separated by a space, and there must be no extra space at the end of the line. Sample Input 1:1278 6 5 7 10 8 11 Sample Output 1:12YES5 7 6 8 11 10 8 Sample Input 2:1278 10 11 8 6 7 5 Sample Output 2:12YES11 8 10 7 5 6 8 Sample Input 3:1278 6 8 5 10 9 11 Sample Output 3:1NO Code and Analysis:(1) 题意：判断给定序列是不是BST或者BST的镜像的先序遍历序列。是，输出YES和后序遍历序列；否，输出NO结束。(2) 思路步骤： 对给定的序列建立BST 对BST先序遍历，后序遍历，BST镜像先序遍历，BST镜像后序遍历 将给定序列与BST先序遍历，BST镜像先序遍历比较，相等，输出YES和对应后序序列，不相等，输出NO。 (3) 数据结构：用vector存储给定序列origin, BST先序序列pre, BST后序序列post, BST镜像先序序列preM, BST镜像后序序列postM123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899#include &lt;cstdio&gt;#include &lt;vector&gt;using namespace std;struct node&#123; int data; node* lchild; node* rchild;&#125;;void insert(node* &amp;root, int x)&#123; if(root == NULL) &#123; root = new node; root-&gt;data = x; root-&gt;lchild = root-&gt;rchild = NULL; return; &#125; else if(root-&gt;data &gt; x) insert(root-&gt;lchild, x); else insert(root-&gt;rchild, x);&#125;// 先序遍历：中左右 --- 镜像先序遍历：中右左// 后序遍历：左右中 --- 镜像后序遍历：右左中// 中序遍历：左中右 --- 镜像中序遍历：右中左void preOrder(node* root, vector&lt;int&gt;&amp;vi)&#123; if(root == NULL) return; vi.push_back(root-&gt;data); preOrder(root-&gt;lchild, vi); preOrder(root-&gt;rchild, vi);&#125;void preMirror(node* root, vector&lt;int&gt;&amp;vi)&#123; if(root == NULL) return; vi.push_back(root-&gt;data); preMirror(root-&gt;rchild, vi); preMirror(root-&gt;lchild, vi);&#125;void postOrder(node* root, vector&lt;int&gt;&amp;vi)&#123; if(root == NULL) return; postOrder(root-&gt;lchild, vi); postOrder(root-&gt;rchild, vi); vi.push_back(root-&gt;data);&#125;void postMirror(node* root, vector&lt;int&gt;&amp;vi)&#123; if(root == NULL) return; postMirror(root-&gt;rchild, vi); postMirror(root-&gt;lchild, vi); vi.push_back(root-&gt;data);&#125;vector&lt;int&gt; origin, pre, post, preM, postM;int main(int argc, char const *argv[])&#123; int n, data; node* root = new node; root = NULL; scanf(&quot;%d&quot;, &amp;n); for (int i = 0; i &lt; n; ++i) &#123; scanf(&quot;%d&quot;, &amp;data); origin.push_back(data); insert(root, data); &#125; preOrder(root, pre); preMirror(root, preM); postOrder(root, post); postMirror(root, postM); if(origin == pre)&#123; printf(&quot;YES\n&quot;); for (int i = 0; i &lt; n; ++i) &#123; printf(&quot;%d&quot;,post[i]); if(i &lt; n-1) printf(&quot; &quot;); &#125; &#125; else if(origin == preM)&#123; printf(&quot;YES\n&quot;); for (int i = 0; i &lt; n; ++i) &#123; printf(&quot;%d&quot;, postM[i]); if(i &lt; n-1) printf(&quot; &quot;); &#125; &#125; else printf(&quot;NO\n&quot;); return 0;&#125;/*78 6 5 7 10 8 11 */]]></content>
@@ -143,30 +132,6 @@
       <tags>
         <tag>算法</tag>
         <tag>STL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[1087 有多少不同的值]]></title>
-    <url>%2F%2Fposts%2Fundefined%2F</url>
-    <content type="text"><![CDATA[1087 有多少不同的值 （20 分）&emsp;&emsp;当自然数 n 依次取 1、2、3、……、N 时，算式 ⌊n/2⌋+⌊n/3⌋+⌊n/5⌋ 有多少个不同的值？（注：⌊x⌋ 为取整函数，表示不超过 x 的最大自然数，即 x 的整数部分。）输入格式：输入给出一个正整数 N（2 ≤ N ≤ 10^4)。1088 三人行 （20 分）输出格式：在一行中输出题面中算式取到的不同值的个数。 输入样例：12017 输出样例：11480 有两种解法：第一种：12345678910111213141516171819#include &lt;iostream&gt;using namespace std;const int maxn = 100001;int main() &#123; bool flag[maxn] = &#123;false&#125;;//通过hash表来去重 int n, temp; cin&gt;&gt;n; for (int i = 1; i &lt;= n; i++) &#123; temp = i/2 +i/3 + i/5; flag[temp] = true; &#125; int count = 0; for(int i = 0; i &lt; maxn; i++)&#123; if(flag[i] == true) count++; &#125; cout&lt;&lt;count&lt;&lt;endl; return 0;&#125; 第二种：123456789101112131415#include &lt;cstdio&gt;#include &lt;set&gt;using namespace std;int main() &#123; int n; scanf(&quot;%d&quot;, &amp;n); set&lt;int&gt; st; //通过集合来去重 for (int i = 1; i &lt;= n; i++) &#123; st.insert(i/2 + i/3 + i/5); &#125; printf(&quot;%d&quot;, st.size()); return 0;&#125; &emsp;&emsp;太简单了没啥好讲的。。。]]></content>
-      <categories>
-        <category>PAT (Basic Level) Practice</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>STL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[1086 就不告诉你 （15 分）]]></title>
-    <url>%2F%2Fposts%2Fundefined%2F</url>
-    <content type="text"><![CDATA[1086 就不告诉你 （15 分）&emsp;&emsp;做作业的时候，邻座的小盆友问你：“五乘以七等于多少？”你应该不失礼貌地围笑着告诉他：“五十三。”本题就要求你，对任何一对给定的正整数，倒着输出它们的乘积。 输入格式：&emsp;&emsp;输入在第一行给出两个不超过 1000 的正整数 A 和 B，其间以空格分隔。 输出格式：&emsp;&emsp;在一行中倒着输出 A 和 B 的乘积。输入样例：15 7 输出样例：153 注意：100的倒序为1。这个很重要，没有得满分的基本都是没注意这点，其他没啥好讲的。 1234567891011121314151617181920#include &lt;cstdio&gt;int main()&#123; int a, b, count = 0, c, ans[10];//基本输入和计算 bool flag = false; scanf(&quot;%d%d&quot;,&amp;a,&amp;b); c = a * b; while(c &gt; 0)&#123;//得到倒序的各元素数组 ans[count++] = c % 10; c /= 10; &#125; for(int i = 0; i &lt; count; i++) &#123;//将前面的0去掉 if(ans[i] != 0) flag = true; if(flag == true) printf(&quot;%d&quot;, ans[i]); &#125; return 0;&#125;]]></content>
-      <categories>
-        <category>PAT (Basic Level) Practice</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>逆序</tag>
       </tags>
   </entry>
 </search>
