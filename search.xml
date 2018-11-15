@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[kkk]]></title>
+    <url>%2F%2Fposts%2Fundefined%2F</url>
+    <content type="text"><![CDATA[reading is a good]]></content>
+      <categories>
+        <category>notes</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[markdown使用]]></title>
     <url>%2F%2Fposts%2Fundefined%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[gjgjgjgjgjajjg]]></content>
+      <categories>
+        <category>reading</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[1090 危险品装箱 （25 分）]]></title>
