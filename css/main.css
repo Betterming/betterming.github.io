@@ -2036,7 +2036,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #14c4aa;
+  background: #6b866b;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2826,10 +2826,6 @@ embed {
 .header {
   line-height: 1.5;
 }
-.header-inner {
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
 .posts-expand {
   padding-top: 50px;
 }
@@ -2837,7 +2833,7 @@ embed {
   margin: 5px 0px 0px 0px;
 }
 .post-button {
-  margin-top: 0px;
+  margin-top: 10px;
 }
 .container .header-inner {
   width: 100%;
@@ -3038,12 +3034,6 @@ img.img-topic {
 }
 .sidebar a:hover {
   color: #fff;
-}
-#days {
-  display: block;
-  color: #07b39b;
-  font-size: 13px;
-  margin-top: 15px;
 }
 .post-toc ol a {
   color: #07b39b;
