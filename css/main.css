@@ -1195,9 +1195,9 @@ pre .javascript .function {
 .brand {
   position: relative;
   display: inline-block;
-  padding: 0 40px;
-  color: #fff;
-  background: #222;
+  padding: 0 20px;
+  color: #000;
+  background: #a166ab;
   border-bottom: none;
 }
 .brand:hover {
@@ -1213,7 +1213,7 @@ pre .javascript .function {
   display: inline-block;
   vertical-align: top;
   line-height: 36px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: normal;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
@@ -2097,7 +2097,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #f4adff;
+  background: #b847c8;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2912,6 +2912,10 @@ embed {
 }
 .header {
   line-height: 1.5;
+}
+a.brand {
+  opacity: 0.1;
+  width: 120px;
 }
 .posts-expand {
   padding-top: 0px;
