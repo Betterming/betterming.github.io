@@ -1195,9 +1195,9 @@ pre .javascript .function {
 .brand {
   position: relative;
   display: inline-block;
-  padding: 0 20px;
+  padding: 0 30px;
   color: #000;
-  background: #a166ab;
+  background: transparent;
   border-bottom: none;
 }
 .brand:hover {
@@ -1206,14 +1206,14 @@ pre .javascript .function {
 .logo {
   display: inline-block;
   margin-right: 5px;
-  line-height: 36px;
+  line-height: 30px;
   vertical-align: top;
 }
 .site-title {
   display: inline-block;
   vertical-align: top;
   line-height: 36px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: normal;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
@@ -2097,7 +2097,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b847c8;
+  background: #045473;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2913,10 +2913,6 @@ embed {
 .header {
   line-height: 1.5;
 }
-a.brand {
-  opacity: 0.1;
-  width: 120px;
-}
 .posts-expand {
   padding-top: 0px;
 }
@@ -3218,7 +3214,7 @@ img.img-topic {
 }
 @media (max-width: 767px) {
   .site-title {
-    font-size: 28px !important;
+    font-size: 20px !important;
     letter-spacing: 0px !important;
   }
   .site-subtitle {
