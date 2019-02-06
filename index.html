@@ -451,6 +451,446 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mq100.top/2019/01/24/2019/2019-01-24-图的深度优先遍历/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Betterming">
+      <meta itemprop="description" content="Coding Changes the World">
+      <meta itemprop="image" content="/images/jj.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小明のBlog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/24/2019/2019-01-24-图的深度优先遍历/" class="post-title-link" itemprop="https://mq100.top/index.html">图的深度优先遍历</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-24 11:05:00 / 修改时间：13:14:01" itemprop="dateCreated datePublished" datetime="2019-01-24T11:05:00+08:00">2019-01-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/24/2019/2019-01-24-图的深度优先遍历/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/24/2019/2019-01-24-图的深度优先遍历/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/01/24/2019/2019-01-24-图的深度优先遍历/" class="leancloud_visitors" data-flag-title="图的深度优先遍历">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 10</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxv = <span class="number">1000</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">1000000000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, G[maxv][maxv];  <span class="comment">// 邻接矩阵</span></span><br><span class="line"><span class="keyword">bool</span> vis[maxv] = &#123;<span class="literal">false</span>&#125;;  <span class="comment">// 对于已访问的节点设置为true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 邻接表的实现</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> v;<span class="comment">//边的终点编号</span></span><br><span class="line">	<span class="keyword">int</span> w;<span class="comment">//边的权值</span></span><br><span class="line">	Node(<span class="keyword">int</span> _v, <span class="keyword">int</span> _w): v(_v),w(_w)&#123;&#125; <span class="comment">//构造函数，用于实现初始化，可以很</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;Node&gt; Adj[N];<span class="comment">// 邻接表</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 邻接矩阵，</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> depth)</span></span>&#123;</span><br><span class="line">	vis[u] = <span class="literal">true</span>;<span class="comment">//设置u已被访问</span></span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> v=<span class="number">0</span>; v&lt;n; v++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(vis[v] == <span class="literal">false</span> &amp;&amp; G[u][v] !=inf)&#123;</span><br><span class="line">			DFS(v, depth + <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFSTrave</span><span class="params">()</span></span>&#123; <span class="comment">// 遍历图G</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> u = <span class="number">0</span>; v &lt; n; u++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(vis[u] == <span class="literal">false</span>) DFS(u, <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; Adj[maxv];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">bool</span> vis[maxv] = &#123;<span class="literal">false</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> depth)</span></span>&#123;</span><br><span class="line">	vis[u] = <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; Adj[u].size(); i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> v = Adj[u][i];</span><br><span class="line">		<span class="keyword">if</span>(vis[v]==<span class="literal">false</span>) DFS(v, depth+<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFSTrave</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> u = <span class="number">0</span>; u &lt; n; u++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(vis[u] == <span class="literal">false</span>) DFS(u, <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mq100.top/2019/01/10/2019/2019-01-10-海量数据处理/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Betterming">
+      <meta itemprop="description" content="Coding Changes the World">
+      <meta itemprop="image" content="/images/jj.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小明のBlog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/10/2019/2019-01-10-海量数据处理/" class="post-title-link" itemprop="https://mq100.top/index.html">海量数据处理</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-10 18:42:00" itemprop="dateCreated datePublished" datetime="2019-01-10T18:42:00+08:00">2019-01-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-18 14:57:07" itemprop="dateModified" datetime="2019-01-18T14:57:07+08:00">2019-01-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/10/2019/2019-01-10-海量数据处理/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/10/2019/2019-01-10-海量数据处理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/01/10/2019/2019-01-10-海量数据处理/" class="leancloud_visitors" data-flag-title="海量数据处理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>本文内容来自余老师上课PPT</strong></p>
+<h1 id="1-海量数据处理的案例类型"><a href="#1-海量数据处理的案例类型" class="headerlink" title="1 海量数据处理的案例类型"></a>1 海量数据处理的案例类型</h1><p><strong>查询</strong>：</p>
+<ul>
+<li>关于重复项的处理：（海量）数据的判重、取重、去重；</li>
+<li>统计： （海量）数据的出现频度；<br><strong>排序</strong>：</li>
+<li>（海量）数据的排序；</li>
+<li>（海量）数据的前K个最大（小）数；</li>
+</ul>
+<p><strong>解题策略中的关键问题</strong>:</p>
+<blockquote>
+<p>1、存储什么？如何存储一组数据；（选择数据结构）<br>2、如何解决问题？（选择算法）</p>
+</blockquote>
+<h1 id="2-可以采用的数据结构"><a href="#2-可以采用的数据结构" class="headerlink" title="2 可以采用的数据结构"></a>2 可以采用的数据结构</h1><blockquote>
+<p>线性结构：</p>
+<ul>
+<li>顺序表：一般的顺序表,字符串,BitMap</li>
+<li>链表：</li>
+</ul>
+<p>树状结构：</p>
+<ul>
+<li>二叉树：BST、红黑树</li>
+<li>B树</li>
+<li>Trie树</li>
+</ul>
+<p>扩展的结构：hash表,B+树</p>
+</blockquote>
+<h1 id="3-可以采用的算法"><a href="#3-可以采用的算法" class="headerlink" title="3 可以采用的算法"></a>3 可以采用的算法</h1><h2 id="3-1-查找"><a href="#3-1-查找" class="headerlink" title="3.1 查找"></a>3.1 查找</h2><ul>
+<li>应用场景：在某数据集合中查找指定的目标项.(隐含：待查找的目标项必须是已知的！)</li>
+<li>基于Hash表的查找：</li>
+<li>蛮力查找（顺序查找）：线性表</li>
+<li>基于有序表的二分查找：有序的顺序表</li>
+<li>字符串的查找：朴素查找、KMP算法、BM算</li>
+<li>基于树的查找：遍历<ul>
+<li>二叉查找树BST：中序遍历</li>
+<li>Trie树：层次遍历</li>
+<li>基于红黑树：STL SET,STL Map</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-2-排序"><a href="#3-2-排序" class="headerlink" title="3.2 排序"></a>3.2 排序</h2><ul>
+<li>基于比较操作的排序算法：平均时间复杂度≥O(Nlog2N)<ul>
+<li>交换排序：两两比较待排序记录的关键字，如果逆序就进行交换，直到所有记录都排好序为止。</li>
+<li>冒泡排序</li>
+<li>快速排序（分区交换排序）</li>
+</ul>
+</li>
+<li>选择排序（Selection Sort）的基本思想是：不断从待排记录序列中选出关键字最小的记录放到已排序记录序列的后面，直到n个记录全部插入已排序记录序列中。<ul>
+<li>简单选择排序</li>
+<li>堆排序（树型选择排序）</li>
+</ul>
+</li>
+<li>插入排序：每次将一个待排序的记录，按其关键字大小插入到前面已经排好序的子表中的适当位置，直到全部记录插入完成为止。<ul>
+<li>直接插入排序</li>
+<li>折半插入排序</li>
+<li>希尔排序</li>
+</ul>
+</li>
+<li>应用场景：对于某顺序表，按照指定的KEY进行整体排序(隐含：待排序的集合已全部存储在内存中；且各条记录的KEY必须是已知的！)<h1 id="4-案例"><a href="#4-案例" class="headerlink" title="4 案例"></a>4 案例</h1><h2 id="4-1-案例–统计"><a href="#4-1-案例–统计" class="headerlink" title="4.1 案例–统计"></a>4.1 案例–统计</h2><strong>案例1</strong>：有一个1G大小的文件，该文件中每一行是一个单词，每个单词的大小不超过16个字节，内存限制大小是1M。统计各个单词的出现频率。<br><strong>分析</strong>：<blockquote>
+<p>将1G文件划分为多个1M的文件；<br>每次只统计1M的文件中单词频度。</p>
+</blockquote>
+</li>
+</ul>
+<p>(1) Q：如何统计1M的文件中单词频度？</p>
+<ul>
+<li>设计思路1：依次读入文件的每个单词，并查询在内存中是否存在与该单词匹配的项。若查询到匹配项，则意味着该单词重复出现了，因而只需更改该单词对应的计数值；否则，将该单词插入到内存对应的数据结构中。（基本操作为：查询和插入操作）</li>
+<li>设计思路2：直接将文件中每个单词读入内存，然后对内存中的单词进行排序，最后进行词频统计。（基本操作为：排序、比较操作）</li>
+</ul>
+<p>(2) 假设单词文件大小F，假定每个单词的平均长度为le，那么单词数量为N=F/le。<br>现对单词频度进行统计，那么</p>
+<ul>
+<li>采用Trie树，结合设计思路1，平均性能为$O(N*le)$ ；</li>
+<li>采用红黑树，结合设计思路1，平均性能为：$O(N*log2N)$；<ul>
+<li>采用红黑树时，可直接利用STL中的map技术:STL map&lt;string,int&gt;</li>
+</ul>
+</li>
+<li>采用hash表，结合设计思路1，平均性能为：O(N*每个槽上的线性表的平均长度)；<ul>
+<li>采用hash表时，可直接利用STL中的hash_map技术:STL hash_map&lt;string,int&gt;</li>
+</ul>
+</li>
+<li>采用线性结构，结合设计思路2。先排序，再相邻单词的相互比较来统计单词频度，平均性能为：$O(N<em>log2N)+O(N)=O(N</em>log2N)$</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mq100.top/2019/01/10/2019/2019-01-10-堆排序/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -554,7 +994,6 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
-             
           
 
           
@@ -577,7 +1016,7 @@
 
       
         
-          <p><strong>堆排序过程及代码实现</strong><br></p>
+          <p><strong>堆排序过程及代码实现</strong><br>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -589,7 +1028,7 @@
           <!--/noindex-->
         
       
-    </div>
+    </p></div>
 
     
 
@@ -744,7 +1183,6 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
-             
           
 
           
@@ -767,7 +1205,7 @@
 
       
         
-          <p>AVL树c++实现<br></p>
+          <p>AVL树c++实现<br>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -779,7 +1217,7 @@
           <!--/noindex-->
         
       
-    </div>
+    </p></div>
 
     
 
@@ -934,7 +1372,6 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
-             
           
 
           
@@ -958,7 +1395,7 @@
       
         
           <h2 id="一、预备知识："><a href="#一、预备知识：" class="headerlink" title="一、预备知识："></a>一、预备知识：</h2><blockquote>
-<p>深度图像程序模型及坐标转换<br>linux，C++编程基础，Cmake 编译器<br>OpenCV 图像处理库<br></p></blockquote>
+<p>深度图像程序模型及坐标转换<br>linux，C++编程基础，Cmake 编译器<br>OpenCV 图像处理库<br>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -970,7 +1407,7 @@
           <!--/noindex-->
         
       
-    </div>
+    </p></blockquote></div>
 
     
 
@@ -1137,7 +1574,6 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
-             
           
 
           
@@ -1327,7 +1763,6 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
-             
           
 
           
@@ -1529,7 +1964,6 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
-             
           
 
           
@@ -1552,7 +1986,7 @@
 
       
         
-          <p><strong>这篇博客对于DL小白或者用于复习还是有点好处的</strong><br></p>
+          <p><strong>这篇博客对于DL小白或者用于复习还是有点好处的</strong><br>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1564,7 +1998,7 @@
           <!--/noindex-->
         
       
-    </div>
+    </p></div>
 
     
 
@@ -1731,7 +2165,6 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
-             
           
 
           
@@ -1922,7 +2355,6 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
-             
           
 
           
@@ -1945,7 +2377,7 @@
 
       
         
-          <p>12月1日苏州和合肥的同学一起去天津中国汽车技术研究中心参观<br></p>
+          <p>12月1日苏州和合肥的同学一起去天津中国汽车技术研究中心参观<br>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1957,387 +2389,7 @@
           <!--/noindex-->
         
       
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mq100.top/2018/12/04/pycharm安装和破解/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Betterming">
-      <meta itemprop="description" content="Coding Changes the World">
-      <meta itemprop="image" content="/images/jj.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小明のBlog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/04/pycharm安装和破解/" class="post-title-link" itemprop="https://mq100.top/index.html">pycharm安装和破解</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          
-
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-04 17:05:31 / 修改时间：17:45:53" itemprop="dateCreated datePublished" datetime="2018-12-04T17:05:31+08:00">2018-12-04</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Technique/" itemprop="url" rel="index"><span itemprop="name">Technique</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/12/04/pycharm安装和破解/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/04/pycharm安装和破解/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/12/04/pycharm安装和破解/" class="leancloud_visitors" data-flag-title="pycharm安装和破解">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-             
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="pycharm2017专业破解版"><a href="#pycharm2017专业破解版" class="headerlink" title="pycharm2017专业破解版"></a>pycharm2017专业破解版</h1><h2 id="1-安装pycharm安装包"><a href="#1-安装pycharm安装包" class="headerlink" title="1. 安装pycharm安装包"></a>1. 安装pycharm安装包</h2>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/12/04/pycharm安装和破解/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-         
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mq100.top/2018/12/03/linux2/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Betterming">
-      <meta itemprop="description" content="Coding Changes the World">
-      <meta itemprop="image" content="/images/jj.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小明のBlog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/03/linux2/" class="post-title-link" itemprop="https://mq100.top/index.html">linux2</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          
-
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-03 21:59:08 / 修改时间：23:40:44" itemprop="dateCreated datePublished" datetime="2018-12-03T21:59:08+08:00">2018-12-03</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Technique/" itemprop="url" rel="index"><span itemprop="name">Technique</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/12/03/linux2/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/03/linux2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/12/03/linux2/" class="leancloud_visitors" data-flag-title="linux2">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-             
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Linux命令二"><a href="#Linux命令二" class="headerlink" title="Linux命令二"></a>Linux命令二</h1><p><img src="/2018/12/03/linux2/图片1.png" alt=""><br></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/12/03/linux2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-         
-          <!--/noindex-->
-        
-      
-    </div>
+    </p></div>
 
     
 
@@ -2425,7 +2477,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2583,7 +2635,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">56</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">59</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2883,7 +2941,7 @@
     var isfetched = false;
     var isXml = true;
     // Search DB path;
-    var search_path = "search.xml";
+    var search_path = "";
     if (search_path.length === 0) {
       search_path = "search.xml";
     } else if (/json$/i.test(search_path)) {
@@ -3217,9 +3275,9 @@
   
     
       
-        
-      
     
+      
+        
       
     
       
@@ -3380,7 +3438,7 @@
   
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":200,"height":300},"mobile":{"show":false},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"left","width":200,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>
 
 <!-- 页面点击小红心 -->

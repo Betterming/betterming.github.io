@@ -151,15 +151,15 @@
 <meta property="og:site_name" content="小明のBlog">
 <meta property="og:description" content="哈希函数–密码学中“瑞士军刀”  区块链二：哈希">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://mq100.top/2018/11/17/Blockchain2/wiki.png">
-<meta property="og:image" content="https://mq100.top/2018/11/17/Blockchain2/SHA.jpg">
-<meta property="og:image" content="https://mq100.top/2018/11/17/Blockchain2/wei.jpg">
-<meta property="og:image" content="https://mq100.top/2018/11/17/Blockchain2/merkle.jpg">
+<meta property="og:image" content="https://mq100.top/2018/11/17/Blockchain2/Blockchain2/wiki.png">
+<meta property="og:image" content="https://mq100.top/2018/11/17/Blockchain2/Blockchain2/SHA.jpg">
+<meta property="og:image" content="https://mq100.top/2018/11/17/Blockchain2/Blockchain2/wei.jpg">
+<meta property="og:image" content="https://mq100.top/2018/11/17/Blockchain2/Blockchain2/merkle.jpg">
 <meta property="og:updated_time" content="2018-11-17T11:20:54.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Blockchain2">
 <meta name="twitter:description" content="哈希函数–密码学中“瑞士军刀”  区块链二：哈希">
-<meta name="twitter:image" content="https://mq100.top/2018/11/17/Blockchain2/wiki.png">
+<meta name="twitter:image" content="https://mq100.top/2018/11/17/Blockchain2/Blockchain2/wiki.png">
 
 
 
@@ -557,7 +557,6 @@
                
                  <span class="leancloud-visitors-count"></span>
              </span>
-             
           
 
           
@@ -580,7 +579,7 @@
 
       
         <p><em><center>哈希函数–密码学中“瑞士军刀”</center></em></p>
-<p><img src="/2018/11/17/Blockchain2/wiki.png" alt="wikipedia"></p>
+<p><img src="Blockchain2/wiki.png" alt="wikipedia"></p>
 <p><strong><center>区块链二：哈希</center></strong><br><a id="more"></a></p>
 <h1 id="1-哈希函数概念"><a href="#1-哈希函数概念" class="headerlink" title="1. 哈希函数概念"></a>1. 哈希函数概念</h1><p>来自维基百科的解释： <em>A hash function is any function that can be used to map data of arbitrary size to data of a fixed size. The values returned by a hash function are called hash values, hash codes, digests, or simply hashes.</em></p>
 <p>&emsp;&emsp;通过一个问题来理解一下，譬如学校里以学生名字为索引建了一张表，存储学生的信息。同时希望在查找的时候能够高效率地查找到学生。可以怎么实现呢？<br>&emsp;&emsp;这个时候的一个做法就是，首先在存储时，对名字进行一次哈希，得到一个数字；然后将名字存在相应数字所对应的位置。在进行查找时，再对希望查找的名字进行一次哈希，得到位置。在算法上，哈希的平均复杂度是O(1)。</p>
@@ -600,7 +599,7 @@
 <li>puzzle friendliness：对于每一个可能的 n位输出 y ，如果 k 是随机性很强的值（譬如长度为256位的随机二进制串），那么找到一个合适的x使得 H(k||x)=y 是不可能显著地低于 2^n的时间复杂度。<br>这个特点强调的是，如果给定特殊的哈希结果 y ，并且输入中有一部分随机性很强 k，那么找到输入的另一个部分 x 使得哈希的结果等于y，那么就只能依靠暴力搜索。<br>应用： search puzzle ；区块链中的工作量证明。</li>
 </ol>
 <h1 id="3-哈希算法SHA-256"><a href="#3-哈希算法SHA-256" class="headerlink" title="3. 哈希算法SHA-256"></a>3. 哈希算法SHA-256</h1><p>&emsp;&emsp;SHA-256是SHA-2中的一个算法。SHA-2，也即第二代安全散列算法（Secure Hash Algorithm 2），由美国国家安全局2001年公布的标准哈希算法，是SHA-1的后继。SHA-2下包括六个不同的算法标准：SHA-224、SHA-256、SHA-384、SHA-512、SHA-512/224、SHA-512/256。这些不同的算法使用不同生成摘要的长度 、循环运行的次数，但算法的基本结构是一致的。现在已知SHA-2容易受到长度扩展攻击，所以推荐使用SHA-3来取代它。对于任意长度的消息，SHA256都产生256bit长的哈希值，也即32字节，或者64位的16进制数，或者8个8位的16机制数 。为什么要强调这个呢？<br>&emsp;&emsp;简单说一下SHA-256的计算过程。</p>
-<p><img src="/2018/11/17/Blockchain2/SHA.jpg" alt="SHA"><br><img src="/2018/11/17/Blockchain2/wei.jpg" alt="wei"></p>
+<p><img src="Blockchain2/SHA.jpg" alt="SHA"><br><img src="Blockchain2/wei.jpg" alt="wei"></p>
 <p>这里A～H共有8个，初始值分别是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">h0 := 0x6a09e667</span><br><span class="line">h1 := 0xbb67ae85</span><br><span class="line">h2 := 0x3c6ef372</span><br><span class="line">h3 := 0xa54ff53a</span><br><span class="line">h4 := 0x510e527f</span><br><span class="line">h5 := 0x9b05688c</span><br><span class="line">h6 := 0x1f83d9ab</span><br><span class="line">h7 := 0x5be0cd19</span><br></pre></td></tr></table></figure></p>
 <p>&emsp;&emsp;看一下，分别是8个16进制数，所以总共有256位，这个就叫做初始向量（IV）。这8个数是前8个素数取平方根，前32位小数。最终生成的哈希值也是这么长，所以，每一轮的计算就是如上图所示，更新这8个值。<br>那怎么更新呢？</p>
 <p>&emsp;&emsp;每一轮计算64次。在上图中可以看到，除了A～H外，有两个输入，分别是 w_{t} 和 k_{t} 。也即每一轮中有64个 w ，以及64个 k 。每个 w 长度为32bit，也即4个字据诶。64个 w 来自于哈希函数的输入，也即，对于输入，不论长短，长的就分成每512bit一个块（64个字节），短的补足512bit。这64个字节构成了前16个 w ，后面的48个 w 通过前面的16个生成。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i from 16 to 63</span><br><span class="line">  s0 := (w[i-15] rightrotate 7) xor (w[i-15] rightrotate 18) xor (w[i-15] rightshift 3)</span><br><span class="line">  s1 := (w[i-2] rightrotate 17) xor (w[i-2] rightrotate 19) xor (w[i-2] rightshift 10)</span><br><span class="line">  w[i] := w[i-16] + s0 + w[i-7] + s1</span><br></pre></td></tr></table></figure></p>
@@ -608,7 +607,7 @@
 <p>这64个常量来自于自然数中前64个质数{2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97…}，取立方根，前32bit而来。<br>然后每一次的计算，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">h := g</span><br><span class="line">g := f</span><br><span class="line">f := e</span><br><span class="line">e := d + temp1</span><br><span class="line">d := c</span><br><span class="line">c := b</span><br><span class="line">b := a</span><br><span class="line">a := temp1 + temp2</span><br></pre></td></tr></table></figure></p>
 <p>temp1和temp2就是经过异或、右移、循环右移等操作生成的。</p>
 <p>&emsp;&emsp;关于短的输入如何补足也有一些细节，在输入末尾进行填充，使输入长度在对512取模以后的余数是448。填充的具体过程：先补第一个比特为1，然后都补0，直到长度满足对512取模后余数是448。需要注意的是，信息必须进行填充，也就是说，即使长度已经满足对512取模后余数是448，补位也必须要进行，这时要填充512个比特。因此，填充是至少补一位，最多补512位。为什么余数是448呢?因为，还有需要有64位的数据表示原始输入的长度，加上这64bit的长度信息448+64=512，刚好512位。</p>
-<p><img src="/2018/11/17/Blockchain2/merkle.jpg" alt="wei"></p>
+<p><img src="Blockchain2/merkle.jpg" alt="wei"></p>
 <p><strong>在区块链中的应用</strong></p>
 <p>哈希在区块链中的用处包括：</p>
 <p>&emsp;&emsp;利用puzzle-friendliness的工作量证明，也即，要求生成一个新区块时，哈希值一定要是以一定数量的连续的0开始的；<br>&emsp;&emsp;对每个区块的内容进行哈希，后面的区块相当于一直在对前面的区块进行哈希，所以一般来说，如果一个区块之后如果跟上其他6个区块之后，一般认为该区块的内容已经被公认了，不可更改。</p>
@@ -781,7 +780,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -939,7 +938,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">56</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">59</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1259,7 +1264,7 @@
     var isfetched = false;
     var isXml = true;
     // Search DB path;
-    var search_path = "search.xml";
+    var search_path = "";
     if (search_path.length === 0) {
       search_path = "search.xml";
     } else if (/json$/i.test(search_path)) {
@@ -1703,7 +1708,7 @@
   
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":200,"height":300},"mobile":{"show":false},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"left","width":200,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>
 
 <!-- 页面点击小红心 -->
