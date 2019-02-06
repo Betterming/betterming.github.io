@@ -1,0 +1,1725 @@
+<script type="text/javascript" src="/js/src/dytitle.js"></script>
+
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/jj.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/jj.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/jj.png?v=6.5.0">
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "66a8be57"
+    });
+  daovoice('update');
+  </script>
+
+  <meta name="description" content="python项目之2048小游戏&amp;emsp;&amp;emsp;2048是一个非常简单的小游戏，对于刚学python的萌新来说，用来练练手也是非常不错的选择。下面利用python自带的tkinter来实现2048的界面设计。">
+<meta name="keywords" content="tkinter,2048">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Exercise4">
+<meta property="og:url" content="https://mq100.top/post/65e81f01.html">
+<meta property="og:site_name" content="小明のBlog">
+<meta property="og:description" content="python项目之2048小游戏&amp;emsp;&amp;emsp;2048是一个非常简单的小游戏，对于刚学python的萌新来说，用来练练手也是非常不错的选择。下面利用python自带的tkinter来实现2048的界面设计。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://mq100.top/post/Exercise4/2048效果图.png">
+<meta property="og:image" content="https://mq100.top/post/Exercise4/状态机.png">
+<meta property="og:updated_time" content="2018-11-15T18:08:33.011Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Exercise4">
+<meta name="twitter:description" content="python项目之2048小游戏&amp;emsp;&amp;emsp;2048是一个非常简单的小游戏，对于刚学python的萌新来说，用来练练手也是非常不错的选择。下面利用python自带的tkinter来实现2048的界面设计。">
+<meta name="twitter:image" content="https://mq100.top/post/Exercise4/2048效果图.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="小明のBlog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://mq100.top/post/65e81f01.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Exercise4 | 小明のBlog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小明のBlog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-阅读">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/reading/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>阅读</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-随笔">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/notes/" rel="section"><i class="menu-item-icon fa fa-fw fa-pencil"></i> <br>随笔</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mq100.top/post/65e81f01.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Betterming">
+      <meta itemprop="description" content="Coding Changes the World">
+      <meta itemprop="image" content="/images/jj.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小明のBlog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Exercise4
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-03 12:34:39" itemprop="dateCreated datePublished" datetime="2018-10-03T12:34:39+08:00">2018-10-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-11-16 02:08:33" itemprop="dateModified" datetime="2018-11-16T02:08:33+08:00">2018-11-16</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Python-Exercise/" itemprop="url" rel="index"><span itemprop="name">Python Exercise</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/post/65e81f01.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/post/65e81f01.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/post/65e81f01.html" class="leancloud_visitors" data-flag-title="Exercise4">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>python项目之2048小游戏<br>&emsp;&emsp;2048是一个非常简单的小游戏，对于刚学python的萌新来说，用来练练手也是非常不错的选择。下面利用python自带的tkinter来实现2048的界面设计。<br><a id="more"></a></p>
+<h2 id="一、总体框架设计"><a href="#一、总体框架设计" class="headerlink" title="一、总体框架设计"></a>一、总体框架设计</h2><p><img src="/post/Exercise4/2048效果图.png" alt="效果图"><br><br></p>
+<ol>
+<li>首先设计大的窗口，然后是4x4小格子</li>
+<li>然后在下面显示分数，上下左右，重置，退出。通过鼠标点击来实现操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"># 大窗口</span><br><span class="line">window=tk.Tk()</span><br><span class="line">window.title(&apos;2048&apos;)</span><br><span class="line">window.geometry(&apos;330x560&apos;)</span><br><span class="line"></span><br><span class="line"> # 绘制初始的界面</span><br><span class="line">lab = &#123;&#125;</span><br><span class="line">Ox, Oy = 10, 10</span><br><span class="line">for i in range(4):</span><br><span class="line">    for j in range(4):</span><br><span class="line">        tlx=Ox+j*80</span><br><span class="line">        tly=Oy+i*80</span><br><span class="line">        num = i * 4 + j</span><br><span class="line">        key = str(board[i][j])</span><br><span class="line">        # height，width值按字符来设置</span><br><span class="line">        l = tk.Label(window, text=board[i][j], bg=color[key], font=(&apos;Arial&apos;, 20), height=2, width=4)</span><br><span class="line">        lab[num] = l</span><br><span class="line">        l.place(x=tlx,y=tly)</span><br><span class="line"></span><br><span class="line"># 下面的控制，分数显示窗口，分数用数组中最大值表示</span><br><span class="line">tk.Label(window,text=&apos;分数:&apos;,bg=&apos;gray96&apos;,font=(&apos;微软雅黑&apos;,15)).place(x=10,y=330)</span><br><span class="line">tk.Label(window, textvariable=va, bg=&apos;gray96&apos;, font=(&apos;微软雅黑&apos;, 15)).place(x=70, y=330)</span><br><span class="line">tk.Button(window, text=&apos;上&apos;, bg=&apos;gray80&apos;, font=(&apos;微软雅黑&apos;,15),width=4, height=1, command=up_op).place(x=130, y=360)</span><br><span class="line">tk.Button(window, text=&apos;下&apos;, bg=&apos;gray80&apos;, font=(&apos;微软雅黑&apos;,15),width=4, height=1, command=down_op).place(x=130, y=465)</span><br><span class="line">tk.Button(window, text=&apos;左&apos;, bg=&apos;gray80&apos;, font=(&apos;微软雅黑&apos;,15),width=4, height=1, command=left_op).place(x=55, y=410)</span><br><span class="line">tk.Button(window, text=&apos;右&apos;, bg=&apos;gray80&apos;, font=(&apos;微软雅黑&apos;,15),width=4, height=1, command=right_op).place(x=205, y=410)</span><br><span class="line">tk.Button(window, text=&apos;重置&apos;, bg=&apos;gray86&apos;, font=(&apos;微软雅黑&apos;, 15), width=4, height=1, command=restart_op).place(x=20,y=510)</span><br><span class="line">tk.Button(window, text=&apos;退出&apos;, bg=&apos;gray86&apos;, font=(&apos;微软雅黑&apos;, 15), width=4, height=1, command=exit_op).place(x=245,y=510)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="二、功能具体实现"><a href="#二、功能具体实现" class="headerlink" title="二、功能具体实现"></a>二、功能具体实现</h2><ol>
+<li>初始化操作：随机在数组中找两个位置，然后各随机分配2或4,2概率为75%，initi之前应该将数组清零。</li>
+<li><p>状态机：<img src="/post/Exercise4/状态机.png" alt=""><br>初始化后游戏进入game状态，然后游戏可能进入win，gameover这两种状态，还可以人为的重置退出。而在win，gameover状态也可以人为的重置退出。<br>那怎样判断win，gameover呢？当分数值为2048时进入win状态，当数组中非零个数为16且没有两个相同数字相邻时进入gameover状态<br>代码实现如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">def is_same_neibor(a):</span><br><span class="line">     for i in range(4):</span><br><span class="line">         for j in range(4):</span><br><span class="line">             if i &lt; 3 and j &lt; 3:</span><br><span class="line">                 if a[i][j] == a[i][j+1] or a[i][j] == a[i+1][j]:</span><br><span class="line">                     return True</span><br><span class="line">             elif i == 3 and j &lt; 3:</span><br><span class="line">                 if a[i][j] == a[i][j+1]:</span><br><span class="line">                     return True</span><br><span class="line">             elif j == 3 and i &lt; 3:</span><br><span class="line">                 if a[i][j] == a[i+1][j]:</span><br><span class="line">                     return True</span><br><span class="line">     return False</span><br><span class="line"></span><br><span class="line"> def judge_state(a): # 判定数组此时状态，max_num记录数组中最大值且为当前分值</span><br><span class="line">     count = update(a)</span><br><span class="line">     max_num=np.max(a)</span><br><span class="line">     va.set(max_num)</span><br><span class="line">     if max_num == 2048:</span><br><span class="line">         round_over=True</span><br><span class="line">         var1 = tk.messagebox.askyesno(title=&apos;闯关成功！&apos;, message=&apos;你想再来一次吗？&apos;)</span><br><span class="line">         if var1:</span><br><span class="line">             for i in range(4):</span><br><span class="line">                 for j in range(4):</span><br><span class="line">                     a[i][j]=0</span><br><span class="line">             initi(a)</span><br><span class="line">             round_over=False</span><br><span class="line">             update(a)</span><br><span class="line">         else:</span><br><span class="line">             window.destroy()</span><br><span class="line"></span><br><span class="line">     if count == 16 and is_same_neibor(a) == False:</span><br><span class="line">         round_over=True</span><br><span class="line">         var2 = tk.messagebox.askyesno(title=&apos;闯关失败！&apos;, message=&apos;  Game Over!\n你想再试一次吗？&apos;)</span><br><span class="line">         if var2:</span><br><span class="line">             for i in range(4):</span><br><span class="line">                 for j in range(4):</span><br><span class="line">                     a[i][j]=0</span><br><span class="line">             initi(a)</span><br><span class="line">             round_over=False</span><br><span class="line">             update(a)</span><br><span class="line">         else:</span><br><span class="line">             window.destroy()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>六种运算操作：</p>
+<ul>
+<li>向左移动且合并</li>
+<li>向右移动且合并</li>
+<li>向上移动且合并</li>
+<li>向下移动且合并</li>
+<li>重置</li>
+<li>退出<br>以向左移动且合并为例，向右移动且合并可以根据向左操作模仿操作，向上向下可通过转置和向左来实现<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> def left_move(a): # 将非零数字左移</span><br><span class="line">      k = 0</span><br><span class="line">      for i in range(4):</span><br><span class="line">          if a[i] != 0:</span><br><span class="line">              a[k] = a[i]</span><br><span class="line">              k += 1</span><br><span class="line">      if k &lt; 4:</span><br><span class="line">          for j in range(k, 4):</span><br><span class="line">              a[j] = 0</span><br><span class="line">def left_add(a): #将非零相同数字左合并</span><br><span class="line">      for i in range(3):</span><br><span class="line">          if a[i] == a[i + 1]:</span><br><span class="line">              a[i] = a[i] * 2</span><br><span class="line">              if i + 1 &lt; 3:</span><br><span class="line">                  for k in range(i + 1, 3):</span><br><span class="line">                      a[k] = a[k + 1]</span><br><span class="line">              a[3] = 0</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>重置和退出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def restart_op():</span><br><span class="line">    for i in range(4):</span><br><span class="line">        for j in range(4):</span><br><span class="line">            board[i][j] = 0</span><br><span class="line">    initi(board)</span><br><span class="line">    update(board)</span><br><span class="line"></span><br><span class="line">def exit_op():</span><br><span class="line">    window.destroy()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>game状态随机数产生和产生时机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> def compare(a,b): #  数组移动前后比较，若不同则产生随机数，否则不产生</span><br><span class="line">      n_equal=False</span><br><span class="line">      for i in range(4):</span><br><span class="line">          for j in range(4):</span><br><span class="line">              if a[i][j]!=b[i][j]:</span><br><span class="line">                  n_equal=True</span><br><span class="line">                  break</span><br><span class="line">      return n_equal</span><br><span class="line">def produce_rand(a): #在随机为零的位置随机产生一个数</span><br><span class="line">      p = random.randint(0, 3)</span><br><span class="line">      q = random.randint(0, 3)</span><br><span class="line">      while (board[p][q] != 0):</span><br><span class="line">          p = random.randint(0, 3)</span><br><span class="line">          q = random.randint(0, 3)</span><br><span class="line">      board[p][q] = random.choice([2, 2, 2, 4])</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>移动后更新：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def update(a): #更新，统计数组中非零元素个数且返回，用于后面判断数组状态。并更新颜色</span><br><span class="line">    count = 0</span><br><span class="line">    for i in range(4):</span><br><span class="line">        for j in range(4):</span><br><span class="line">            if a[i][j]:</span><br><span class="line">                count += 1</span><br><span class="line">            num = i * 4 + j</span><br><span class="line">            c_key = str(a[i][j])</span><br><span class="line">            lab[num].config(text=a[i][j], bg=color[c_key])</span><br><span class="line">    return count</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br></pre></td><td class="code"><pre><span class="line">from tkinter import messagebox</span><br><span class="line">import tkinter as tk</span><br><span class="line">import numpy as np</span><br><span class="line">import random</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    # 初始化，创造一个窗口，显示title，窗口大小</span><br><span class="line">    window=tk.Tk()</span><br><span class="line">    window.title(&apos;2048&apos;)</span><br><span class="line">    window.geometry(&apos;330x560&apos;)</span><br><span class="line">    # 不同的分数不同的颜色</span><br><span class="line">    round_over=False</span><br><span class="line">    color = &#123;&apos;0&apos;: &apos;gray86&apos;, &apos;2&apos;: &apos;green1&apos;, &apos;4&apos;: &apos;cyan&apos;, &apos;8&apos;: &apos;blue1&apos;, &apos;16&apos;: &apos;pink4&apos;, &apos;32&apos;: &apos;yellow1&apos;, &apos;64&apos;: &apos;yellow4&apos;,</span><br><span class="line">             &apos;128&apos;: &apos;pink&apos;,&apos;256&apos;: &apos;green4&apos;, &apos;512&apos;: &apos;yellow4&apos;, &apos;1024&apos;: &apos;orange4&apos;, &apos;2048&apos;: &apos;red&apos;&#125;</span><br><span class="line">    # 初始化，随机在数组中找两个位置，然后各随机分配2或4,2概率为75%，initi之前应该将数组清零。</span><br><span class="line">    def initi(a):</span><br><span class="line">        m1 = random.randint(0, 3)    #从0到3之间产生一个随机整数（包含端点）</span><br><span class="line">        n1 = random.randint(0, 3)</span><br><span class="line">        m2 = random.randint(0, 3)</span><br><span class="line">        n2 = random.randint(0, 3)</span><br><span class="line">        while ((m1 == m2) and (n1 == n2)):</span><br><span class="line">            m2 = random.randint(0, 3)</span><br><span class="line">            n2 = random.randint(0, 3)</span><br><span class="line">        a[m1][n1] = random.choice([2, 2, 2, 4])   #从列表中随机选中一个数</span><br><span class="line">        a[m2][n2] = random.choice([2, 2, 2, 4])</span><br><span class="line"></span><br><span class="line">    # 创建原始数组</span><br><span class="line">    board = np.zeros((4, 4), dtype=np.int16)</span><br><span class="line">    initi(board)</span><br><span class="line"></span><br><span class="line">    # 绘制初始的界面</span><br><span class="line">    lab = &#123;&#125;</span><br><span class="line">    Ox, Oy = 10, 10</span><br><span class="line">    for i in range(4):</span><br><span class="line">        for j in range(4):</span><br><span class="line">            tlx=Ox+j*80</span><br><span class="line">            tly=Oy+i*80</span><br><span class="line">            num = i * 4 + j</span><br><span class="line">            key = str(board[i][j])</span><br><span class="line">            # height，width值按字符来设置</span><br><span class="line">            l = tk.Label(window, text=board[i][j], bg=color[key], font=(&apos;Arial&apos;, 20), height=2, width=4)</span><br><span class="line">            lab[num] = l</span><br><span class="line">            l.place(x=tlx,y=tly)</span><br><span class="line"></span><br><span class="line">    # 定义各种操作函数</span><br><span class="line">    def left_move(a): # 将非零数字左移</span><br><span class="line">        k = 0</span><br><span class="line">        for i in range(4):</span><br><span class="line">            if a[i] != 0:</span><br><span class="line">                a[k] = a[i]</span><br><span class="line">                k += 1</span><br><span class="line">        if k &lt; 4:</span><br><span class="line">            for j in range(k, 4):</span><br><span class="line">                a[j] = 0</span><br><span class="line"></span><br><span class="line">    def right_move(a):</span><br><span class="line">        k = 3</span><br><span class="line">        for i in range(4):</span><br><span class="line">            if a[3 - i] != 0:</span><br><span class="line">                a[k] = a[3 - i]</span><br><span class="line">                k -= 1</span><br><span class="line">        if k &gt; 0:</span><br><span class="line">            for j in range(0, k + 1):</span><br><span class="line">                a[j] = 0</span><br><span class="line"></span><br><span class="line">    def left_add(a): #将非零相同数字左合并</span><br><span class="line">        for i in range(3):</span><br><span class="line">            if a[i] == a[i + 1]:</span><br><span class="line">                a[i] = a[i] * 2</span><br><span class="line">                if i + 1 &lt; 3:</span><br><span class="line">                    for k in range(i + 1, 3):</span><br><span class="line">                        a[k] = a[k + 1]</span><br><span class="line">                a[3] = 0</span><br><span class="line"></span><br><span class="line">    def right_add(a):</span><br><span class="line">        for i in range(3):</span><br><span class="line">            if a[3 - i] == a[2 - i]:</span><br><span class="line">                a[3 - i] = a[3 - i] * 2</span><br><span class="line">                if 2 - i &gt; 0:</span><br><span class="line">                    for k in range(1, 3 - i):</span><br><span class="line">                        a[3 - i - k] = a[2 - i - k]</span><br><span class="line">                a[0] = 0</span><br><span class="line"></span><br><span class="line">    def produce_rand(a): #在随机为零的位置随机产生一个数</span><br><span class="line">        p = random.randint(0, 3)</span><br><span class="line">        q = random.randint(0, 3)</span><br><span class="line">        while (board[p][q] != 0):</span><br><span class="line">            p = random.randint(0, 3)</span><br><span class="line">            q = random.randint(0, 3)</span><br><span class="line">        board[p][q] = random.choice([2, 2, 2, 4])</span><br><span class="line"></span><br><span class="line">    def update(a): #更新，统计数组中非零元素个数且返回，用于后面判断数组状态。并更新颜色</span><br><span class="line">        count = 0</span><br><span class="line">        for i in range(4):</span><br><span class="line">            for j in range(4):</span><br><span class="line">                if a[i][j]:</span><br><span class="line">                    count += 1</span><br><span class="line">                num = i * 4 + j</span><br><span class="line">                c_key = str(a[i][j])</span><br><span class="line">                lab[num].config(text=a[i][j], bg=color[c_key])</span><br><span class="line">        return count</span><br><span class="line"></span><br><span class="line">    def is_same_neibor(a):</span><br><span class="line">        for i in range(4):</span><br><span class="line">            for j in range(4):</span><br><span class="line">                if i &lt; 3 and j &lt; 3:</span><br><span class="line">                    if a[i][j] == a[i][j+1] or a[i][j] == a[i+1][j]:</span><br><span class="line">                        return True</span><br><span class="line">                elif i == 3 and j &lt; 3:</span><br><span class="line">                    if a[i][j] == a[i][j+1]:</span><br><span class="line">                        return True</span><br><span class="line">                elif j == 3 and i &lt; 3:</span><br><span class="line">                    if a[i][j] == a[i+1][j]:</span><br><span class="line">                        return True</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line">    def judge_state(a): # 判定数组此时状态，max_num记录数组中最大值且为当前分值</span><br><span class="line">        count = update(a)</span><br><span class="line">        max_num=np.max(a)</span><br><span class="line">        va.set(max_num)</span><br><span class="line">        if max_num == 2048:</span><br><span class="line">            round_over=True</span><br><span class="line">            var1 = tk.messagebox.askyesno(title=&apos;闯关成功！&apos;, message=&apos;你想再来一次吗？&apos;)</span><br><span class="line">            if var1:</span><br><span class="line">                for i in range(4):</span><br><span class="line">                    for j in range(4):</span><br><span class="line">                        a[i][j]=0</span><br><span class="line">                initi(a)</span><br><span class="line">                round_over=False</span><br><span class="line">                update(a)</span><br><span class="line">            else:</span><br><span class="line">                window.destroy()</span><br><span class="line"></span><br><span class="line">        if count == 16 and is_same_neibor(a) == False:</span><br><span class="line">            round_over=True</span><br><span class="line">            var2 = tk.messagebox.askyesno(title=&apos;闯关失败！&apos;, message=&apos;  Game Over!\n你想再试一次吗？&apos;)</span><br><span class="line">            if var2:</span><br><span class="line">                for i in range(4):</span><br><span class="line">                    for j in range(4):</span><br><span class="line">                        a[i][j]=0</span><br><span class="line">                initi(a)</span><br><span class="line">                round_over=False</span><br><span class="line">                update(a)</span><br><span class="line">            else:</span><br><span class="line">                window.destroy()</span><br><span class="line"></span><br><span class="line">    def compare(a,b):</span><br><span class="line">        n_equal=False</span><br><span class="line">        for i in range(4):</span><br><span class="line">            for j in range(4):</span><br><span class="line">                if a[i][j]!=b[i][j]:</span><br><span class="line">                    n_equal=True</span><br><span class="line">                    break</span><br><span class="line">        return n_equal</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # 进行运算操作</span><br><span class="line">    def up_op():</span><br><span class="line">        ob=board.copy()</span><br><span class="line">        tb = board.T</span><br><span class="line">        for i in range(4):</span><br><span class="line">            left_move(tb[i])</span><br><span class="line">            left_add(tb[i])</span><br><span class="line">        m = tb.T</span><br><span class="line">        for i in range(4):</span><br><span class="line">            for j in range(4):</span><br><span class="line">                board[i][j] = m[i][j]</span><br><span class="line">        if compare(ob,board):</span><br><span class="line">            produce_rand(board)</span><br><span class="line">        judge_state(board)</span><br><span class="line"></span><br><span class="line">    def down_op():</span><br><span class="line">        ob = board.copy()</span><br><span class="line">        tb = board.T</span><br><span class="line">        for i in range(4):</span><br><span class="line">            right_move(tb[i])</span><br><span class="line">            right_add(tb[i])</span><br><span class="line">        m = tb.T</span><br><span class="line">        for i in range(4):</span><br><span class="line">            for j in range(4):</span><br><span class="line">                board[i][j] = m[i][j]</span><br><span class="line">        if compare(ob, board):</span><br><span class="line">            produce_rand(board)</span><br><span class="line">        judge_state(board)</span><br><span class="line"></span><br><span class="line">    def left_op():</span><br><span class="line">        ob = board.copy()</span><br><span class="line">        for i in range(4):</span><br><span class="line">            left_move(board[i])</span><br><span class="line">            left_add(board[i])</span><br><span class="line">        if compare(ob, board):</span><br><span class="line">            produce_rand(board)</span><br><span class="line">        judge_state(board)</span><br><span class="line"></span><br><span class="line">    def right_op():</span><br><span class="line">        ob = board.copy()</span><br><span class="line">        for i in range(4):</span><br><span class="line">            right_move(board[i])</span><br><span class="line">            right_add(board[i])</span><br><span class="line">        if compare(ob, board):</span><br><span class="line">            produce_rand(board)</span><br><span class="line">        judge_state(board)</span><br><span class="line"></span><br><span class="line">    def restart_op():</span><br><span class="line">        for i in range(4):</span><br><span class="line">            for j in range(4):</span><br><span class="line">                board[i][j] = 0</span><br><span class="line">        initi(board)</span><br><span class="line">        update(board)</span><br><span class="line"></span><br><span class="line">    def exit_op():</span><br><span class="line">        window.destroy()</span><br><span class="line"></span><br><span class="line">    # 创建按钮和标签</span><br><span class="line">    va=tk.StringVar()</span><br><span class="line">    va.set(0)</span><br><span class="line">    tk.Label(window,text=&apos;分数:&apos;,bg=&apos;gray96&apos;,font=(&apos;微软雅黑&apos;,15)).place(x=10,y=330)</span><br><span class="line">    tk.Label(window, textvariable=va, bg=&apos;gray96&apos;, font=(&apos;微软雅黑&apos;, 15)).place(x=70, y=330)</span><br><span class="line">    tk.Button(window, text=&apos;上&apos;, bg=&apos;gray80&apos;, font=(&apos;微软雅黑&apos;,15),width=4, height=1, command=up_op).place(x=130, y=360)</span><br><span class="line">    tk.Button(window, text=&apos;下&apos;, bg=&apos;gray80&apos;, font=(&apos;微软雅黑&apos;,15),width=4, height=1, command=down_op).place(x=130, y=465)</span><br><span class="line">    tk.Button(window, text=&apos;左&apos;, bg=&apos;gray80&apos;, font=(&apos;微软雅黑&apos;,15),width=4, height=1, command=left_op).place(x=55, y=410)</span><br><span class="line">    tk.Button(window, text=&apos;右&apos;, bg=&apos;gray80&apos;, font=(&apos;微软雅黑&apos;,15),width=4, height=1, command=right_op).place(x=205, y=410)</span><br><span class="line">    tk.Button(window, text=&apos;重置&apos;, bg=&apos;gray86&apos;, font=(&apos;微软雅黑&apos;, 15), width=4, height=1, command=restart_op).place(x=20,y=510)</span><br><span class="line">    tk.Button(window, text=&apos;退出&apos;, bg=&apos;gray86&apos;, font=(&apos;微软雅黑&apos;, 15), width=4, height=1, command=exit_op).place(x=245,y=510)</span><br><span class="line"></span><br><span class="line">    window.mainloop()</span><br><span class="line"></span><br><span class="line">if __name__==&apos;__main__&apos;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></p>
+<p><br><br><strong>相关链接</strong></p>
+<ul>
+<li><a href="http://python.jobbole.com/84971/" target="_blank" rel="noopener">http://python.jobbole.com/84971/</a></li>
+<li><a href="https://www.shiyanlou.com/courses/reports/1283118" target="_blank" rel="noopener">https://www.shiyanlou.com/courses/reports/1283118</a></li>
+<li><a href="https://blog.csdn.net/qq_39451109/article/details/78161438" target="_blank" rel="noopener">https://blog.csdn.net/qq_39451109/article/details/78161438</a></li>
+<li><a href="https://blog.csdn.net/yjy_aii/article/details/78071955" target="_blank" rel="noopener">https://blog.csdn.net/yjy_aii/article/details/78071955</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Betterming 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Betterming 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tkinter/" rel="tag"><i class="fa fa-tag"></i> tkinter</a>
+          
+            <a href="/tags/2048/" rel="tag"><i class="fa fa-tag"></i> 2048</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/b1eae7a3.html" rel="next" title="Exercise_3_飞机大战">
+                <i class="fa fa-chevron-left"></i> Exercise_3_飞机大战
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/652da2f1.html" rel="prev" title="linux1">
+                linux1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/jj.png" alt="Betterming">
+            
+              <p class="site-author-name" itemprop="name">Betterming</p>
+              <p class="site-description motion-element" itemprop="description">Coding Changes the World</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">57</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/Betterming" title="GitHub &rarr; https://github.com/Betterming" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://blog.csdn.net/qq_32074689" title="CSDN &rarr; https://blog.csdn.net/qq_32074689" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:2652214420@qq.com" title="E-Mail &rarr; mailto:2652214420@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xq773939719.coding.me/" title="https://xq773939719.coding.me/" rel="noopener" target="_blank">大佬</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://me.csdn.net/zgcr654321" title="https://me.csdn.net/zgcr654321" rel="noopener" target="_blank">诸葛大佬</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、总体框架设计"><span class="nav-text">一、总体框架设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、功能具体实现"><span class="nav-text">二、功能具体实现</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Betterming</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+  
+  <script type="text/javascript" color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'rXo08RXWhpfL5sTienl8p1ur-gzGzoHsz',
+        appKey: 'QraQ5KvFraIq0iUhzsDG0sqE',
+        placeholder: '来呀！快活呀！~',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: true
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 15004,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"left","width":200,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
